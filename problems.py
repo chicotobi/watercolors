@@ -48,6 +48,8 @@ def niveau(n):
     x = 'rvgb mrmp vooh ervb hhpg vbop empg brgo emeh'
   if n == 115:
     x = 'wwro wppm bmgv ower mgbr vghv mdrh eyhy oeyd oyrg vbde pphd'
+  if n == 119:
+    x = 'xxxo xxxp xxxr xxxy xxxh xxxg xxxb xxxo xxxw xxxd xxxe xxxm'
   if n == 122:
     x = 'xxxg xxxo xxxb xxxv xxxo xxxm xxxh xxxb xxxp'
   if n == 129:
