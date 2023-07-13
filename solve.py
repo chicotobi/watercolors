@@ -7,7 +7,7 @@ from utils import print_state
 all_states = []
 all_transitions = []
 all_flask_flask = {}
-
+colx = len(COLORS) - 1 
 
 def get_index(s):
   global all_states
@@ -101,18 +101,22 @@ def replace_unknown_in_states(i0, j0, cidx, n):
     dct["state"] = s
     all_states[k] = dct
 
-def solve_with_unknown(sin,path_length=1,a=[]):
+def solve_with_unknown(sidx,path_length=1,a=[]):
   global print_path
-  for st in get_steps(sin):
+  steps = get_steps(all_states[sidx]["state"])
+  for st in steps:
     print()
     if print_path:
       print(a)
+    sin = all_states[sidx]["state"]
     print_state(sin)
     sout = step(sin,st[0],st[1])
+    if get_index(sout) != -1:
+        continue
     print("Please pour flask",st[0],"into",st[1])
     i0 = st[0]
     j0 = len(sout[i0])-1
-    if j0 >= 0:
+    if j0 >= 0 and sout[i0][j0] == colx:
       while True:
         x = input("Enter the appearing color(s): ")
         if x!='':
@@ -120,13 +124,15 @@ def solve_with_unknown(sin,path_length=1,a=[]):
       cidx = dict(zip([i[0] for i in COLORS],range(len(COLORS))))[x[0]]
       replace_unknown_in_states(i0, j0, cidx, len(x))
       sout = replace_unknown_in_a_state(sout, i0, j0, cidx, len(x))
+    sin = all_states[sidx]["state"]
     if get_index(sout) == -1:
       add_state(sout,path_length)
       add_transition(sin, sout)
       add_flask_flask(sin,sout,st[0],st[1])
       if is_solved(sout):
         return True
-      if solve_with_unknown(sout,path_length+1,a+[st]):
+      sidx2 = get_index(sout)
+      if solve_with_unknown(sidx2,path_length+1,a+[st]):
         return True
       print("Restart")
       print_path = True
@@ -143,7 +149,7 @@ def solve(problem_id, fast = True, plot_full = True):
     if with_unknown:
         if fast or plot_full:
             print("Problem has unknown tiles. 'fast' or 'plot_full' are not supported.")
-        solve_with_unknown(s0)
+        solve_with_unknown(0)
     else:
         if fast:
             if plot_full:
