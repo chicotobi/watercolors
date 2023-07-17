@@ -58,6 +58,12 @@ def niveau(n):
     x = 'xxxm xxxm xxxo xxxb xxxr xxxb xxxp xxxb xxxh'
   if n == 129:
     x = 'dprv dorm odwe pyvp eobm bmyh hbgw hrbe wogv mghp dyye vgrw'
+  if n == 133:
+    x = 'gwmv vddy pgwr ebrh ovge ydhh rbvo rybm pbdp pwhg mwoe meoy'
+  if n == 137:
+    x = 'xxxv xxxv xxxd xxxr xxxd xxxh xxxp xxxv xxxv xxxh xxxe xxxe'
+  if n == 139:
+    x = 'ehmo oyyy mgpd vdrm phye bevv bmrw dgph grgw odwb hbve wpro'
 
   if x is None:
       raise ValueError(n)
