@@ -85,6 +85,8 @@ def solve_fast(sin,a=[]):
     sout = step(sin,st[0],st[1])
     if get_index(sout) == -1:
       add_state(sout,-1)
+      add_transition(sin, sout)
+      add_flask_flask(sin,sout,st[0],st[1])
       if is_solved(sout):
         print(a+[st])
         return True
@@ -155,6 +157,8 @@ def solve(problem_id, fast = True, plot_full = True):
             if plot_full:
                 print("Fast solution. 'plot_full' is not supported.")
             solve_fast(s0)
+            numbered_states = list(enumerate(all_states))
+            plot_graph.plot_solution(numbered_states,all_transitions,all_flask_flask)
         else:
             solve_optimal(s0)
             numbered_states = list(enumerate(all_states))

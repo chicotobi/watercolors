@@ -1,3 +1,3 @@
 import solve
 
-solve.solve(119, fast = True, plot_full = False)
+solve.solve(6, fast = False, plot_full = True)

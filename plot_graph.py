@@ -15,6 +15,8 @@ def get_color(char):
     col = '#657220'
   if col == 'violet':
     col = '#893AFF'
+  if col == 'wbrown':
+    col = '#654321'
   return col
 
 def plot_state(idx,dct):
