@@ -66,13 +66,15 @@ def niveau(n):
     x = 'ehmo oyyy mgpd vdrm phye bevv bmrw dgph grgw odwb hbve wpro'
   if n == 159:
     x = 'woew vhmp rome pwrb dbyo bogy hggb mdvp ydgm hwev hevd prry'
+  if n == 161:
+    x = 'xxxe xxxr xxxp xxxm xxxh xxxg xxxh xxxb xxxy xxxp xxxv xxxv'
 
   if x is None:
       raise ValueError(n)
 
   c = dict(zip([i[0] for i in COLORS],range(len(COLORS))))
   with_unknown = 'x' in x
-  
+
   # Consistency check
   if not with_unknown:
       dct = dict(Counter([i for i in x if i!=' ']))
@@ -81,6 +83,6 @@ def niveau(n):
           print(dct)
           raise ValueError(x)
   d = tuple(tuple(c[j] for j in tuple(i)) for i in x.split(' ')) + ((),) * empty_flasks
-  
-  return d, with_unknown
 
+  return d, with_unknown
+  
